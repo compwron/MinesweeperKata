@@ -21,10 +21,12 @@ class PlayerGrid
   end
 
   def translate_grid grid
+    puts "starting grid is: #{grid}"
     grid.each_with_index.map { |horizontal_row, horizontal_index|
       horizontal_row.each_with_index.map { |item, vertical_index|
         position = Position.new(horizontal_index, vertical_index)
-        is_star?(item) ? '*' : calculate_nearness_to_star(position, grid)
+        item_at_position = grid[position.horizontal_index][position.vertical_index]
+        is_star?(item_at_position) ? '*' : calculate_nearness_to_star(position, grid)
       }
     }
   end

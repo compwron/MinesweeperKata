@@ -13,12 +13,14 @@ describe PlayerGrid do
 		end
 
 		it "should translate to nearest structure" do
-			grid = PlayerGrid.new [Array.new(3, Array.new(3, false))]
-     	grid.to_s.should == "* 1\n1 1\n 0 0"
+      a = Array.new(3) {Array.new(2, false)}
+      a[0][0] = true
+			grid = PlayerGrid.new a
+     	grid.to_s.should == "* 1\n1 1\n0 0"
 		end
 	end
 
-	describe "#calculate_nearness_to_star" do
+  describe "#calculate_nearness_to_star" do
 		it "should not see star when there is no star" do
 			a = Array.new(2) {Array.new(2, false)}
     	grid = PlayerGrid.new a
@@ -41,7 +43,6 @@ describe PlayerGrid do
       # a[0][0] = true
       grid = PlayerGrid.new a
       valid_relative_points = grid.valid_relative_points(Position.new(0, 0))
-      puts "!!!!!!!!! valid relative points #{valid_relative_points.join("\n")}"
       valid_relative_points.should include Position.new(0, 1)
       valid_relative_points.should include Position.new(1, 1)
       valid_relative_points.should include Position.new(1, 0)
