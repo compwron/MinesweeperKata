@@ -12,4 +12,4 @@ end
 
 gridFilepath = ARGV[0]
 
-puts GridMaker.new(gridFilepath).playerGrid
+puts GridMaker.new(gridFilepath).player_grid

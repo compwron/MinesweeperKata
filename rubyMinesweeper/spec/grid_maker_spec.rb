@@ -2,11 +2,16 @@ require_relative "../lib/grid_maker"
 
 describe GridMaker do
 
-  subject { GridMaker.new "fixtures/spec_grid_small.txt"}
+  subject { GridMaker.new "spec/fixtures/spec_grid_small.txt"}
 
-  describe "#player_grid_dimensions" do
-    it "should make grid of size specified in fixture" do
-    	subject.player_grid_dimensions.should == [4, 4]
+  describe "player_grid" do
+    it "should read frid from file as data structure" do
+      a = Array.new(4) {Array.new(4, false)}
+      a[0][0] = true
+      a[2][1] = true
+      subject.player_grid.should == a
     end
-	end
+  end
+
+
 end

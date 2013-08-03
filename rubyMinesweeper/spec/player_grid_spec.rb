@@ -40,7 +40,6 @@ describe PlayerGrid do
   describe "#valid_relative_points" do
     it "should only produce valid relative points" do
       a = Array.new(2) {Array.new(2, false)}
-      # a[0][0] = true
       grid = PlayerGrid.new a
       valid_relative_points = grid.valid_relative_points(Position.new(0, 0))
       valid_relative_points.should include Position.new(0, 1)
