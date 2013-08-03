@@ -39,22 +39,16 @@ class PlayerGrid
   def calculate_nearness_to_star position, grid
     valid_relative_points(position).map { |position|
       contents_of_point = grid[position.horizontal_index][position.vertical_index]
-      puts "contents of point: #{contents_of_point}"
-      a = is_star?(contents_of_point) ? 1 : 0
-      puts a
-      a
+      is_star?(contents_of_point) ? 1 : 0
     }.inject(&:+)
   end
 
   def valid_relative_points starting_position
-    a = RELATIVE_POSITIONS.map { |position|
+    RELATIVE_POSITIONS.map { |position|
       calculate_relative_position(position, starting_position)
     }.reject { |position|
       ! is_valid? position
     }
-
-    puts "relative points: #{a}"
-    a
   end
 
   def calculate_relative_position(position, starting_position)

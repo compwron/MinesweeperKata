@@ -41,6 +41,7 @@ describe PlayerGrid do
       # a[0][0] = true
       grid = PlayerGrid.new a
       valid_relative_points = grid.valid_relative_points(Position.new(0, 0))
+      puts "!!!!!!!!! valid relative points #{valid_relative_points.join("\n")}"
       valid_relative_points.should include Position.new(0, 1)
       valid_relative_points.should include Position.new(1, 1)
       valid_relative_points.should include Position.new(1, 0)

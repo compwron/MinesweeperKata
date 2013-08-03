@@ -8,4 +8,9 @@ class Position
   def to_s
     "Position: [#{@horizontal_index}, #{@vertical_index}]"
   end
+
+  def == other
+    other.horizontal_index == @horizontal_index &&
+        other.vertical_index == @vertical_index
+  end
 end
