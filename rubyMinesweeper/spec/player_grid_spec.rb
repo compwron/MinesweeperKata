@@ -61,7 +61,19 @@ describe PlayerGrid do
       grid = PlayerGrid.new a
       grid.calculate_relative_position(Position.new(0, 0), Position.new(1, 1))
     end
+  end
 
+  describe "#is_valid?" do
+    it "should know that a point is valid on the grid" do
+      a = Array.new(2) {Array.new(2, false)}
+      grid = PlayerGrid.new a
+      grid.is_valid?(Position.new(0, 0)).should be_true
+    end
 
+    it "should know that a point is not valid on the grid" do
+      a = Array.new(2) {Array.new(2, false)}
+      grid = PlayerGrid.new a
+      grid.is_valid?(Position.new(-1, -1)).should be_false
+    end
   end
 end

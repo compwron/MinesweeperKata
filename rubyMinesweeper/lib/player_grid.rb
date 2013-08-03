@@ -66,11 +66,11 @@ class PlayerGrid
   end
 
   def in_horizontal_grid_range num
-    num > 0 && num < @grid_horizontal_size
+    num >= 0 && num < @grid_horizontal_size
   end
 
   def in_vertical_grid_range num
-    num > 0 && num < @grid_vertical_size
+    num >= 0 && num < @grid_vertical_size
   end
 
 end
