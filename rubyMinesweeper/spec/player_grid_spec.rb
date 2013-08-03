@@ -4,18 +4,18 @@ require_relative "../lib/position"
 describe PlayerGrid do
 
   describe "#to_s" do
-  #   it "should translate to nearest structure" do
-  #   	a = Array.new(2) {Array.new(2, false)}
-  #   	a[0][0] = true
-  #   	grid = PlayerGrid.new a
+     it "should translate to nearest structure" do
+     	a = Array.new(2) {Array.new(2, false)}
+     	a[0][0] = true
+     	grid = PlayerGrid.new a
 
-  #   	grid.to_s.should == "* 1\n1 1"
-		# end
+     	grid.to_s.should == "* 1\n1 1"
+		end
 
-		# it "should translate to nearest structure" do
-		# 	grid = PlayerGrid.new [Array.new(3, Array.new(3, false))]
-  #   	grid.to_s.should == "* 1\n1 1\n 0 0"
-		# end
+		it "should translate to nearest structure" do
+			grid = PlayerGrid.new [Array.new(3, Array.new(3, false))]
+     	grid.to_s.should == "* 1\n1 1\n 0 0"
+		end
 	end
 
 	describe "#calculate_nearness_to_star" do

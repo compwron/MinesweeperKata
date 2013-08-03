@@ -11,7 +11,7 @@ class PlayerGrid
   def initialize grid
     @grid_horizontal_size = grid.size
     @grid_vertical_size = grid[0].size
-    #@grid = translate_grid(grid)
+    @grid = translate_grid(grid)
   end
 
   def to_s
@@ -20,17 +20,14 @@ class PlayerGrid
     }.join("\n")
   end
 
-  # private
-  #def translate_grid grid
-  #  grid.each_with_index.map { |horizontal_row, horizontal_index|
-  #    horizontal_row.each_with_index.map { |item, vertical_index|
-  #      position = Position.new(horizontal_index, vertical_index)
-  #      puts " position parts are: #{horizontal_index} #{vertical_index}"
-  #      puts "position is: #{position}"
-  #      is_star?(item) ? '*' : calculate_nearness_to_star(position, grid)
-  #    }
-  #  }
-  #end
+  def translate_grid grid
+    grid.each_with_index.map { |horizontal_row, horizontal_index|
+      horizontal_row.each_with_index.map { |item, vertical_index|
+        position = Position.new(horizontal_index, vertical_index)
+        is_star?(item) ? '*' : calculate_nearness_to_star(position, grid)
+      }
+    }
+  end
 
   def is_star? item
     item
