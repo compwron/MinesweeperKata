@@ -24,26 +24,21 @@ class PlayerGrid
   def translate_grid grid
     grid.each_with_index.map { |horizontal_row, horizontal_index|
       horizontal_row.each_with_index.map { |item, vertical_index|
-        is_star?(item) ? '*' : calculate_nearness_to_star(Position.new(horizontal_index, vertical_index), grid)
+        position = Position.new(horizontal_index, vertical_index)
+        puts " position parts are: #{horizontal_index} #{vertical_index}"
+        puts "position is: #{position}"
+        is_star?(item) ? '*' : calculate_nearness_to_star(position, grid)
       }
     }
   end
 
   def is_star? item
-    puts "item is: #{item}"
     item
   end
 
   def calculate_nearness_to_star position, grid
-    puts "position is: #{position} "
-    puts "with horiz #{position.horizontal_index}"
-    puts" and vertical #{position.vertical_index}"
-    puts "grid is #{grid}"
-
-    p "valid relative points: #{valid_relative_points(position.horizontal_index, position.vertical_index)}"
+    puts "position is: #{position}"
     valid_relative_points(position.horizontal_index, position.vertical_index).map { |position|
-      puts "valid relative point: #{position}"
-      p "horiz index: #{grid[position.horizontal_index]}"
       is_star?(grid[position.horizontal_index][position.vertical_index]) ? 1 : 0
     }.inject(&:+)
   end
@@ -61,11 +56,11 @@ class PlayerGrid
   end
 
   def in_horizontal_grid_range num
-    num < 0 || num <= @grid_horizontal_size
+    num < 0 && num <= @grid_horizontal_size
   end
 
   def in_vertical_grid_range num
-    num < 0 || num <= @grid_vertical_size
+    num < 0 && num <= @grid_vertical_size
   end
 
 end
