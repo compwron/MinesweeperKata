@@ -24,7 +24,15 @@ describe PlayerGrid do
     	grid = PlayerGrid.new a
     	grid.calculate_nearness_to_star(Position.new(0, 0), a).should == 0
     	#grid.calculate_nearness_to_star(Position.new(1, 1), a).should == 0
-		end
+    end
+
+    it "should not see star when there is no star for largest index on either axis" do
+      a = Array.new(2) {Array.new(2, false)}
+      # a[0][0] = true
+      grid = PlayerGrid.new a
+      #grid.calculate_nearness_to_star(Position.new(0, 0), a).should == 0
+      grid.calculate_nearness_to_star(Position.new(1, 1), a).should == 0
+    end
   end
 
   describe "#relative_points" do

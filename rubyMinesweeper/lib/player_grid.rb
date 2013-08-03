@@ -21,46 +21,46 @@ class PlayerGrid
   end
 
   # private
-  def translate_grid grid
-    grid.each_with_index.map { |horizontal_row, horizontal_index|
-      horizontal_row.each_with_index.map { |item, vertical_index|
-        position = Position.new(horizontal_index, vertical_index)
-        puts " position parts are: #{horizontal_index} #{vertical_index}"
-        puts "position is: #{position}"
-        is_star?(item) ? '*' : calculate_nearness_to_star(position, grid)
-      }
-    }
-  end
+  #def translate_grid grid
+  #  grid.each_with_index.map { |horizontal_row, horizontal_index|
+  #    horizontal_row.each_with_index.map { |item, vertical_index|
+  #      position = Position.new(horizontal_index, vertical_index)
+  #      puts " position parts are: #{horizontal_index} #{vertical_index}"
+  #      puts "position is: #{position}"
+  #      is_star?(item) ? '*' : calculate_nearness_to_star(position, grid)
+  #    }
+  #  }
+  #end
 
   def is_star? item
     item
   end
 
   def calculate_nearness_to_star position, grid
-    puts "position is: #{position}"
     valid_relative_points(position.horizontal_index, position.vertical_index).map { |position|
-      is_star?(grid[position.horizontal_index][position.vertical_index]) ? 1 : 0
+      contents_of_point = grid[position.horizontal_index][position.vertical_index]
+      is_star?(contents_of_point) ? 1 : 0
     }.inject(&:+)
-  end
-
-  def is_invalid? position
-    in_horizontal_grid_range(position.horizontal_index) && in_vertical_grid_range(position.vertical_index)
   end
 
   def valid_relative_points horizontal_index, vertical_index
     RELATIVE_POSITIONS.map { |position|
       Position.new(position.horizontal_index + horizontal_index, position.vertical_index + vertical_index)
     }.reject { |position|
-      is_invalid? position
+      ! is_valid? position
     }
   end
 
+  def is_valid? position
+    in_horizontal_grid_range(position.horizontal_index) && in_vertical_grid_range(position.vertical_index)
+  end
+
   def in_horizontal_grid_range num
-    num < 0 && num <= @grid_horizontal_size
+    num > 0 && num < @grid_horizontal_size
   end
 
   def in_vertical_grid_range num
-    num < 0 && num <= @grid_vertical_size
+    num > 0 && num < @grid_vertical_size
   end
 
 end
