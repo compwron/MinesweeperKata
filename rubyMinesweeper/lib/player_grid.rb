@@ -65,4 +65,8 @@ class PlayerGrid
     num >= 0 && num < @grid_vertical_size
   end
 
+  def header index
+    "Field ##{index}:\n#{self}\n"
+  end
+
 end

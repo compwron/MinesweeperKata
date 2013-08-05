@@ -1,8 +1,31 @@
 class GridMaker
+  require_relative "../lib/player_grid"
   attr_reader :player_grids
 
   def initialize fileName
-    @player_grids = make_grids(lines_from_file(fileName))
+    @lines = lines_from_file(fileName)
+    @player_grids = make_player_grids(make_grids)
+  end
+
+  def make_player_grids(grids)
+    grids.map { |grid|
+      grid.empty? ? nil : PlayerGrid.new(grid)
+    }
+  end
+
+  def make_grids
+    grids = []
+    map = []
+    @lines.each_with_index { |line, index|
+      if is_numbers?(line) then
+        if !is_first_time(index) then
+          map = add_map_to_grids_and_reset_map(grids, map)
+        end
+      else
+        map << translate_line(line)
+      end
+    }
+    grids << map
   end
 
   private
@@ -18,21 +41,6 @@ class GridMaker
     line.gsub("\n", '').split('').map { |item|
       item == '*' ? true : item == '.' ? false : item
     }
-  end
-
-  def make_grids(lines)
-    grids = []
-    map = []
-    lines.each_with_index { |line, index|
-      if is_numbers?(line) then
-        if !is_first_time(index) then
-          map = add_map_to_grids_and_reset_map(grids, map)
-        end
-      else
-        map << translate_line(line)
-      end
-    }
-    grids << map
   end
 
   def add_map_to_grids_and_reset_map(grids, map)

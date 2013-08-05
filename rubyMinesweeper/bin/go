@@ -14,8 +14,8 @@ end
 gridFilepath = ARGV[0]
 
 index = 0
-puts GridMaker.new(gridFilepath).player_grids.reject{|grid| grid == []}.map { |grid|
+puts GridMaker.new(gridFilepath).player_grids.reject {|grid| grid == nil}.map { |grid|
 
-  "Field ##{index+=1}:\n#{PlayerGrid.new(grid)}\n"
+  grid.header(index+=1)
 
 }.join("\n")
