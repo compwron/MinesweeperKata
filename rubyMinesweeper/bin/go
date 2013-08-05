@@ -13,7 +13,9 @@ end
 
 gridFilepath = ARGV[0]
 
-puts GridMaker.new(gridFilepath).player_grids.map { |grid|
-  puts "grid is: #{grid}"
-  PlayerGrid.new(grid)
+index = 0
+puts GridMaker.new(gridFilepath).player_grids.reject{|grid| grid == []}.map { |grid|
+
+  "Field ##{index+=1}:\n#{PlayerGrid.new(grid)}\n"
+
 }.join("\n")
