@@ -5,6 +5,7 @@ class GridMaker
     @player_grids = make_grids(lines_from_file(fileName))
   end
 
+  private
   def lines_from_file fileName
     lines = []
     File.open(fileName).map { |line|
