@@ -10,7 +10,7 @@ class PlayerGrid
 
   def initialize grid
     @grid_horizontal_size = grid.size
-    @grid_vertical_size = grid[0].size
+    @grid_vertical_size = grid[0] ? grid[0].size : 0
     @grid = translate_grid(grid)
   end
 

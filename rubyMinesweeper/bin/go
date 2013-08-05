@@ -4,12 +4,16 @@
 # The input will consist of an arbitrary number of fields. The first line of each field contains two integers n and m (0 < n,m <= 100) which stands for the number of lines and columns of the field respectively. The next n lines contains exactly m characters and represent the field. Each safe square is represented by an "." character (without the quotes) and each mine square is represented by an "*" character (also without the quotes). The first field line where n = m = 0 represents the end of input and should not be processed.
 
 require_relative "../lib/grid_maker"
+require_relative "../lib/player_grid"
 
-unless ARGV.size == 1 
-	puts "Usage: ./bin/go pathToGrid" 
-	exit 
+unless ARGV.size == 1
+  puts "Usage: ./bin/go pathToGrid"
+  exit
 end
 
 gridFilepath = ARGV[0]
 
-puts GridMaker.new(gridFilepath).player_grids.join("\n")
+puts GridMaker.new(gridFilepath).player_grids.map { |grid|
+  puts "grid is: #{grid}"
+  PlayerGrid.new(grid)
+}.join("\n")

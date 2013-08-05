@@ -17,7 +17,11 @@ describe PlayerGrid do
       a[0][0] = true
 			grid = PlayerGrid.new a
      	grid.to_s.should == "* 1\n1 1\n0 0"
-		end
+    end
+
+    it "should print nothing for empty grid" do
+      PlayerGrid.new([]).to_s.should == ""
+    end
 	end
 
   describe "#calculate_nearness_to_star" do

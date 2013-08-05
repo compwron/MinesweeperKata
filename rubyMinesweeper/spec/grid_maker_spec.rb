@@ -23,5 +23,11 @@ describe GridMaker do
 
       subject.player_grids.last.should == b
     end
+
+    it "should return empty grid for 0 0 grid" do
+      file = 'spec/fixtures/empty_grid.txt'
+      subject = GridMaker.new(file)
+      subject.player_grids.first.should == []
+    end
   end
 end
