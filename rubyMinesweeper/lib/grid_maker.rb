@@ -2,15 +2,24 @@ class GridMaker
   attr_reader :player_grids
 
   def initialize fileName
-    @player_grids = make_grids(fileName)
+    @player_grids = make_grids(lines_from_file(fileName))
   end
 
-  def make_grids(fileName)
+  def lines_from_file fileName
     lines = []
     File.open(fileName).map { |line|
       lines << line
     }
+    lines
+  end
 
+  def translate_line line
+    line.gsub("\n", '').split('').map { |item|
+      item == '*' ? true : item == '.' ? false : item
+    }
+  end
+
+  def make_grids(lines)
     grids = []
     map = []
     is_first_time = true
@@ -23,10 +32,8 @@ class GridMaker
           map = []
         end
       else
-        translated_line = line.gsub("\n", '').split('').map { |item|
-          item == '*' ? true : item == '.' ? false : item
-        }
-        map << translated_line
+
+        map << translate_line(line)
       end
     }
     grids << map

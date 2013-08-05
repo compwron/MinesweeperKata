@@ -21,7 +21,6 @@ describe GridMaker do
       b = Array.new(2) { Array.new(2, false) }
       b[1][0] = true
 
-      puts "grids: #{subject.player_grids}"
       subject.player_grids.last.should == b
     end
   end
