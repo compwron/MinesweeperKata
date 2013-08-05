@@ -18,9 +18,11 @@ describe GridMaker do
       a[0][0] = true
       subject.player_grids.first.should == a
 
-      #b = Array.new(2) { Array.new(2, false) }
-      #b[1][0] = true
-      #subject.player_grids.last.should == b
+      b = Array.new(2) { Array.new(2, false) }
+      b[1][0] = true
+
+      puts "grids: #{subject.player_grids}"
+      subject.player_grids.last.should == b
     end
   end
 end

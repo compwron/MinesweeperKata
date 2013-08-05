@@ -20,6 +20,7 @@ class GridMaker
           is_first_time = false
         else
           grids << map.clone
+          map = []
         end
       else
         translated_line = line.gsub("\n", '').split('').map { |item|
