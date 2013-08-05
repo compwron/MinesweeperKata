@@ -25,8 +25,7 @@ class GridMaker
     lines.each_with_index { |line, index|
       if is_numbers?(line) then
         if !is_first_time(index) then
-          grids << map.clone
-          map = []
+          map = add_map_to_grids_and_reset_map(grids, map)
         end
       else
         map << translate_line(line)
@@ -34,6 +33,11 @@ class GridMaker
     }
     grids << map
     grids.compact
+  end
+
+  def add_map_to_grids_and_reset_map(grids, map)
+    grids << map.clone
+    []
   end
 
   def is_first_time(index)
