@@ -12,4 +12,4 @@ end
 
 gridFilepath = ARGV[0]
 
-puts GridMaker.new(gridFilepath).player_grid
+puts GridMaker.new(gridFilepath).player_grids.join("\n")
