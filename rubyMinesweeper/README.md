@@ -1,6 +1,10 @@
 This code is implementing the kata here: http://codingdojo.org/cgi-bin/wiki.pl?KataMinesweeper (pasted below)
 
 
+todo:
+rake
+simplecov
+
 About this Kata
 Kata originated here: acm.uva.es/p/v101/10189.html
 
