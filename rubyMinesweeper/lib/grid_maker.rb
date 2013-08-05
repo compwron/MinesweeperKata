@@ -10,7 +10,7 @@ class GridMaker
   def make_player_grids(grids)
     grids.map { |grid|
       grid.empty? ? nil : PlayerGrid.new(grid)
-    }
+    }.reject { |grid| grid.nil? }
   end
 
   def make_grids
