@@ -22,22 +22,22 @@ class GridMaker
   def make_grids(lines)
     grids = []
     map = []
-    is_first_time = true
-    lines.each { |line|
+    lines.each_with_index { |line, index|
       if is_numbers?(line) then
-        if is_first_time then
-          is_first_time = false
-        else
+        if !is_first_time(index) then
           grids << map.clone
           map = []
         end
       else
-
         map << translate_line(line)
       end
     }
     grids << map
     grids.compact
+  end
+
+  def is_first_time(index)
+    index == 0
   end
 
   def is_numbers? line
