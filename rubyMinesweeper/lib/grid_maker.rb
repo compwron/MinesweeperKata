@@ -32,7 +32,6 @@ class GridMaker
       end
     }
     grids << map
-    grids.compact
   end
 
   def add_map_to_grids_and_reset_map(grids, map)
