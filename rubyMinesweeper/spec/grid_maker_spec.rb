@@ -1,4 +1,4 @@
-require_relative "../lib/grid_maker"
+require_relative "spec_helper"
 
 describe GridMaker do
 

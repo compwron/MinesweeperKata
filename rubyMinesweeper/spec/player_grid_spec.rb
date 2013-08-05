@@ -1,5 +1,4 @@
-require_relative "../lib/player_grid"
-require_relative "../lib/position"
+require_relative "spec_helper"
 
 describe PlayerGrid do
 
