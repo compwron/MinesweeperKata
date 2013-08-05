@@ -1,16 +1,17 @@
 class GridMaker
-	attr_reader :player_grid
+	attr_reader :player_grids
 	def initialize fileName
-    @player_grid = make_grid(fileName)
+    @player_grids = make_grids(fileName)
 	end
 
-  def make_grid(fileName)
-    File.open(fileName).map{ |line|
+  def make_grids(fileName)
+    a = File.open(fileName).map{ |line|
       if (line.include?('*') || line.include?('.')) then
         line.split('').map { |item|
           item == '*' ? true : item == '.' ? false : nil
         }.compact
       end
     }.compact
+    [a]
   end
 end
