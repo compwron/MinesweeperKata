@@ -1,5 +1,6 @@
+require_relative "../lib/player_grid"
 class GridMaker
-  require_relative "../lib/player_grid"
+  
   attr_reader :player_grids
 
   def initialize fileName
@@ -10,7 +11,7 @@ class GridMaker
   def make_player_grids(grids)
     grids.map { |grid|
       grid.empty? ? nil : PlayerGrid.new(grid)
-    }.reject { |grid| grid.nil? }
+    }.compact
   end
 
   def make_grids
@@ -53,6 +54,6 @@ class GridMaker
   end
 
   def is_numbers? line
-    /\d/ =~ line ? true : false
+    !!(/\d/ =~ line) # translates into true/false
   end
 end

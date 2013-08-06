@@ -1,6 +1,5 @@
+require_relative "position"
 class PlayerGrid
-  require_relative "position"
-
 
   RELATIVE_POSITIONS = [
       Position.new(-1, -1), Position.new(0, -1), Position.new(+1, -1),
@@ -31,7 +30,7 @@ class PlayerGrid
   end
 
   def is_star? item
-    item
+    !!(item)
   end
 
   def calculate_nearness_to_star position, grid
